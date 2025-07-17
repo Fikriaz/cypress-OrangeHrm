@@ -51,6 +51,23 @@ describe("Invalidation Login User",() => {
     cy.contains('.oxd-text','Invalid credentials');
     })
 
+    
+    it('User cannot login with invalid username and password', ()=> {
+    cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
+    
+    //fill form
+    cy.get('.oxd-input[name="username"]')
+    .type("seraef");
+    cy.get('.oxd-input[name="password"]')
+    .type('user123');
+    cy.get('.oxd-button[type="submit"]')
+    .click();
+
+    //Assertion
+    cy.contains('.oxd-text','Invalid credentials');
+
+    })
+
     it('User cannot login with valid username and password field is empty', ()=> {
     cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
     
@@ -61,7 +78,7 @@ describe("Invalidation Login User",() => {
     .click();
 
     //Assertion
-    cy.contains('.oxd-text','需要')
+    cy.contains('.oxd-text','Required')
     })
 
     it('User cannot login with username field is empty and valid password', ()=> {
@@ -77,10 +94,10 @@ describe("Invalidation Login User",() => {
     .click();
 
     //Assertion
-   cy.contains('.oxd-text','需要')
+   cy.contains('.oxd-text','Required')
     })
 
-    it('User cannot login with username and password filed is empty', ()=> {
+    it('User cannot login with username and password field is empty', ()=> {
     cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
     
     //fill form
@@ -92,6 +109,7 @@ describe("Invalidation Login User",() => {
     .click();
 
     //Assertion
-    cy.contains('.oxd-text','需要')
+    cy.contains('.oxd-text','Required')
+    cy.contains('.oxd-text','Required')
     })
 })
