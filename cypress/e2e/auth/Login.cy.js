@@ -86,8 +86,7 @@ describe("Invalidation Login User",() => {
         cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
     
     //fill form
-    cy.get('.oxd-input[name="username"]')
-    .type("Admin");
+   
     cy.get('.oxd-input[name="password"]')
     .type('admin123');
     cy.get('.oxd-button[type="submit"]')
@@ -103,8 +102,6 @@ describe("Invalidation Login User",() => {
     //fill form
     cy.get('.oxd-input[name="username"]')
     .type("Admin");
-    cy.get('.oxd-input[name="password"]')
-    .type('admin123');
     cy.get('.oxd-button[type="submit"]')
     .click();
 
