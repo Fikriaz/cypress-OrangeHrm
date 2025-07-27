@@ -11,9 +11,31 @@ describe('Validation Create new admin', () =>{
 
         //add user
         cy.get('.oxd-button').contains('Add').click()
-        cy.get('.oxd-select-text').contains('-- Select --').click()
-        cy.get('.oxd-select-text-input').contains('Admin').click()
-        
+        cy.get('.oxd-select-text').eq(0).click()
+        cy.get('.oxd-select-dropdown').should('be.visible')
+        cy.get('.oxd-select-option > span').contains('Admin').click()
 
+        //add status
+        cy.get('.oxd-select-text').eq(1).click()
+        cy.get('.oxd-select-dropdown').should('be.visible')
+        cy.get('.oxd-select-option > span').contains('Enabled').click()
+
+        //add status
+        cy.get('.oxd-autocomplete-text-input input[placeholder="Type for hints..."]')
+            .should('be.visible')
+            .click()
+            .clear()
+            .type('Ranga Akunuri')
+
+        cy.wait(2000) // Tunggu suggestions
+        cy.contains('Ranga Akunuri').click() // Pilih dari suggestions
+       
+  cy.contains('Username')
+  .closest('.oxd-input-group')
+  .find('input.oxd-input')
+  .should('be.visible')
+  .click()
+  .clear()
+  .type('testuser123')
     })
 })
